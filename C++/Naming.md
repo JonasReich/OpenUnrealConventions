@@ -10,7 +10,7 @@
 - Macros use UPPER_CASE
 - Abbreviations are usually written in pascal case: Http, Hdmi, Usb
 - Abbreviations for module names to avoid naming conflicts may use upper case prefix, e.g. 
-    ```c++
+    ```cpp
     // U prefix      = UObject subclass (see below)
     // + OUU prefix  = Scope: Open Unreal Utilities
     // + CoreLibrary = Name of the class within the scope
@@ -40,7 +40,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
 - Containers/templates referring to reflected types may only be aliased if the resulting type is not used in conjunction with uproperties
 - Based on the type that is aliased, a different prefix should be picked:
     - F prefix to shorten concrete type (containers included):
-        ```C++
+        ```cpp
         // good
         using FOptionTextFilter = TTextFilter< TSharedPtr<FAvailableStringTable> >;
         using FAudioSamplePool = TMediaObjectPool<FAudioSample>;
@@ -49,7 +49,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         using AudioSamplePool = TMediaObjectPool<FAudioSample>;
         ```
     - T prefix for alias templates
-        ```C++
+        ```cpp
         // good
         template <typename AttributeType>
         using TVertexAttributeIndicesArray = TAttributeIndicesArray<AttributeType, FVertexID>;
@@ -60,7 +60,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         using VertexAttributeIndicesArray = TAttributeIndicesArray<AttributeType, FVertexID>;
         ```
     - Type suffix to shorten template type parameters or alias types dependent on template type parameters:
-        ```C++
+        ```cpp
         template<typename ElementType, int32 NumElements>
         {
             // good
@@ -70,7 +70,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         }
         ```
     - F or I prefix for concrete smart pointer types:
-        ```C++
+        ```cpp
         // good
         using FDataPtr = TSharedPtr<TArray<uint8>>;
         using IAssetTreeItemPtr = TSharedPtr<IAssetTreeItem>;
@@ -79,7 +79,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         using AssetTreeItemPtr = TSharedPtr<IAssetTreeItem>;
         ```
     - Super to alias primary parent class (in generated headers ofc, but also sometimes for custom "F-classes"):
-        ```C++
+        ```cpp
         class Foo : public Bar, public IFooBarInterface
         {
             // good
@@ -91,7 +91,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         }
         ```
     - Type for type traits that return a type - implemented either as template or struct
-        ```C++
+        ```cpp
         //good
         template <> struct TUnsignedIntType<4> { using Type = uint32; };
         struct FHairStrandsMeshTrianglePositionFormat { using Type = FVector4; }
@@ -105,7 +105,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
 - Boolean variables and fields must be prefixed by b.
 - Boolean fields usually begin with a passive verb, often Has or Is. The rest of the name is supposed to be a noun.
 
-```C++
+```cpp
 // good
 bool bIsPendingDestruction;
 FSkin Skin;
@@ -128,7 +128,7 @@ bool bPendingDestruction; // missing verb
 
 Parameters that are passed in or in and out should be prefixed with In or InOut respectively.
 
-```C++
+```cpp
 bool Trace(FHitResult& OutHitResult);
 ```
 
@@ -137,15 +137,15 @@ bool Trace(FHitResult& OutHitResult);
 _The following rules apply to all types of delegates in Unreal C++ (single cast delegate, multicast delegates, dynamic multicast delegates and events)._
 
 - Delegate fields are always prefixed with On, e.g.
-    ```C++
+    ```cpp
     FComponentOverlapEvent OnComponentOverlapped;
     ```
 - Delegate types that are required for a single instance may be called exactly like the instance with an F prefix:
-    ```C++
+    ```cpp
     FOnComponentOverlapped OnComponentOverlapped;
     ```
 - Delegates that share the same signature may be declared with a shared delegate type ending with Delegate suffix:
-    ```C++
+    ```cpp
     FLoadDelegate;       // used for all kinds of loading events
     FGuiRequestDelegate; // used for various GUI request events
     // etc
@@ -153,7 +153,7 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
     When in doubt, you should still create individual delegate types, esp. because it makes changing signatures easier.
 - In both cases, delegate types are prefixed with F as per the usual type prefix rules
 - Try to make it obvious from the delegate instance names at which time a delegate will be invoked, e.g.
-    ```C++
+    ```cpp
     // good - it's clear when the individual delegates are called
     // this would still be true if only a single one of these delegates would exist
     FLoadDelegate OnLoadRequestSubmitted;
@@ -165,7 +165,7 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
     FLoadDelegate OnLoad;
     ```
 - Functions that are bound to delegates should be named like the delegate instance with an additional prefix "Handle":
-    ```C++
+    ```cpp
     void HandleOnExplosion();   // good: clear 
     void OnExplosion();         // bad: OnExplosion is not a verb
     void DealExplosionDamage(); // bad: This may be called in HandleOnExplosion, but it's usually cleaner to have a separate function for delegate binding
@@ -173,7 +173,7 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
 - Delegates with parameters must document their parameters. If the usage of a parameter changes, a new delegate type should be created.
 
     Documentation of parameters should happen at delegate type level:
-    ```C++
+    ```cpp
     // good - add inline comment
     DECLARE_DELEGATE_OneParam(FOnFileLoaded, FString /*FilePath*/);
     
@@ -190,7 +190,7 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
     Putting this info at instance level is good too, but should exactly match the type info. The basic expectation what parameters contain which information should be the same for all delegate instances!
 
     See this example:
-    ```C++
+    ```cpp
     //-----------------------
     // BAD CODE. DO NOT USE!
     //-----------------------

@@ -5,7 +5,7 @@
 ## Braces
 
 Never omit braces with two exceptions:
-```C++
+```cpp
 // early return:
 if (condition)
     return;
@@ -19,14 +19,14 @@ if (condition)
 
 - Indent using tabs (4 characters)
 - Align text following non-tab characters (e.g. function parameters, comments) using spaces:
-    ```C++
+    ```cpp
     // Optionally align function parameters to aid legibility
     MyFunction(FirstParam,        SecondParam, true,  "some string");
     MyFunction(FirstParamVariant, SecondParam, false, "some different string");
     ```
 - Indent code by execution blocks
 - Indent 2nd/3rd/.. line of statements with line-breaks, e.g.
-    ```C++
+    ```cpp
     UE_CLOG(LogTemp, Log, TEXT("My log message with many parameters %s, %i, %s"),
         *StringParameter1, // next lines of statement indented by a single tab
         IntParameter, StringParaneter2);
@@ -37,12 +37,12 @@ if (condition)
 ## Spaces within Statements
 
 - Add a space between if/for and parentheses
-    ```C++
+    ```cpp
     if (myCondition) // good
     if(myCondition)  // bad
     ```
 - Don't add a space between function name and parentheses
-    ```C++
+    ```cpp
     MyFunction();  // good
     MyFunction (); // bad
     ```
@@ -51,7 +51,7 @@ if (condition)
     - Do add a space before and after const
     - Do add a space between type and variable name
     - Examples:
-        ```C++
+        ```cpp
         // good
         FFoo* MyFoo;
         const FFoo* MyFoo;

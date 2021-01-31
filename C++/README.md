@@ -50,7 +50,7 @@ Use ``const`` when possible for
 Do _not_ use const in the following situations:
 - passing parameters by value (see [Parameter Passing]())
 - return values:
-    ```C++
+    ```cpp
     // Bad - returning a const array
     const TArray<FString> GetSomeArray();
  
@@ -115,7 +115,7 @@ Not all features of C++11, C++14 etc are supported by all UE4 target platforms. 
 - strongly typed enums
     - use enum classes instead of plain enums wherever possible
     - only exception: enum flags used in conjunction with enum classes:
-        ```C++
+        ```cpp
         // If you do use plain enums, always wrap them with a "namespace" struct:
         struct EFlags
         {
@@ -142,11 +142,11 @@ To ensure your module's header files can be included by other modules, you shoul
 1. Never use relative paths using ``./`` or ``../`` notation
 2. Is your module split in public/private folder?
     - Yes: Use paths relative to the module parent directory for module directory, e.g.
-        ```C++
+        ```cpp
         #include "MyModule/SubFolder/HeaderFile.h"
         ```
     - No: Use paths relative to the module directory itself, e.g.
-        ```C++
+        ```cpp
         #include "SubFolder/HeaderFile.h"
         ```
 

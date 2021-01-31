@@ -14,7 +14,7 @@
 Comments that describe API should follow the following style
 
 - Type docs used for classes, structs, enums, namespaces:
-    ```C++
+    ```cpp
     /**
      * GameMode is a subclass of GameModeBase that behaves like a multiplayer match-based game.
      * It has default behavior for picking spawn points and match state.
@@ -28,14 +28,14 @@ Comments that describe API should follow the following style
     ```
 - Function docs for global functions and member functions
     - Single line docs
-        ```C++
+        ```cpp
         /** Returns true if the match state is InProgress or other gameplay state */
         UFUNCTION(BlueprintCallable, Category="Game")
         virtual bool IsMatchInProgress() const;
         ```
     - Multi-line docs
     - Multi-line docs with parameter descriptions. Parameter descriptions may be omitted (even for individual parameters) if they add no value.
-        ```C++
+        ```cpp
         /**
          * Called from CommitMapChange before unloading previous level.
          * Used for asynchronous level streaming
@@ -47,7 +47,7 @@ Comments that describe API should follow the following style
 - Member fields should be documented in the same way as functions
 - Enum cases follow the same rules, but they may also use single line comments
     - either above the variables/cases
-        ```C++
+        ```cpp
         /** Possible state of the current match, where a match is all the gameplay that happens on a single map */
         namespace MatchState
         {
@@ -66,7 +66,7 @@ Comments that describe API should follow the following style
         }
         ```
     - or behind the values and left aligned:
-        ```C++
+        ```cpp
         /** Possible state of the current match, where a match is all the gameplay that happens on a single map */
         namespace MatchState
         {
@@ -84,7 +84,7 @@ Comments that describe API should follow the following style
 Subsections, headings, etc. can use blocks of ``// single line comments`` like this:
 
 - Headings:
-    ```C++
+    ```cpp
     //////////////////////////////////////////////////////////////////////////
     /// Big Heading: always 74 characters wide
     /// can have multiple lines
@@ -100,15 +100,15 @@ Subsections, headings, etc. can use blocks of ``// single line comments`` like t
     //-----------------------------
     ```
 - Long separators (e.g. for separating test cases in a single test file)
-    ```C++
+    ```cpp
     //////////////////////////////////////////////////////////////////////////
     ```
     or
-    ```C++
+    ```cpp
     //------------------------------------------------------------------------
     ```
 - Virtual function override groups:
-    ```C++
+    ```cpp
     // - Parent Class
     virtual void Foo() override;
     virtual void Bar() override;
@@ -118,7 +118,7 @@ Subsections, headings, etc. can use blocks of ``// single line comments`` like t
 ### Inline comments
 
 Comments that are placed inline in function definitions and source files should usually use blocks of ``// single line comments``:
-```C++
+```cpp
 void FFoo::Bar()
 {
     // Number of shares must always be 42 because...

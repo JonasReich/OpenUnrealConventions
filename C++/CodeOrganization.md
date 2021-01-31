@@ -58,7 +58,7 @@ Use the following sorting of members:
         - non-uproperties
     - Member Functions
         - All overrides grouped by parent type like this:
-            ```C++
+            ```cpp
             // - ParentTypeName
             virtual void SomeFunction() override;
             virtual void SomeOtherFunction() override;
