@@ -277,11 +277,11 @@ body {
     max-width: 1200px;
 }
 
-.header, .footer {
+header, footer {
     width: 15%;
 }
 
-.section {
+section {
     width: 80%;
     max-width: 800px;
 }
