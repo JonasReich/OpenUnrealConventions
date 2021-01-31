@@ -1,3 +1,5 @@
+<sub>[Home](../README.md) / [C++](./README.md) / Formatting </sub>
+
 # C++ Code Formatting
 
 ## Braces

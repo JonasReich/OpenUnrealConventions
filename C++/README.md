@@ -1,7 +1,10 @@
+<sub>[Home](../README.md) / C++ </sub>
+
 # C++ Coding Conventions
 
 ## [Code Organization](CodeOrganization.md)
 ## [Naming](Naming.md)
+## [Formatting](Formatting.md)
 
 ## STL / std Namespace
 
