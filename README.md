@@ -2,14 +2,17 @@
 
 These coding conventions should serve as a foundation for all aspects of Unreal Engine programming. This means they cover not only C++ code, but also Blueprints and Python.
 
+## [C++ Coding Conventions](./C++/README.md)
+
 ## WIP Status
 
 The coding conventions are a work-in-progress project. This list shows the current status of the sub-conventions:
-| domain | progress |
-|-|-|
-| C++ | 90% |
-| Blueprint | 0% |
-| Python | 0% |
+
+| domain    | progress |
+|-----------|----------|
+| C++       | 90%      |
+| Blueprint | 0%       |
+| Python    | 0%       |
 
 ## Sources
 
