@@ -1,0 +1,15 @@
+/* Adjusted widths for full screen usage */
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.header, .footer {
+    width: 15%;
+}
+
+.section {
+    width: 80%;
+    max-width: 800px;
+}
