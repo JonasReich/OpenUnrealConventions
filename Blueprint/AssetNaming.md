@@ -34,7 +34,7 @@ Placing this crucial information at the same positions in the file name makes it
 | Material                | M_         |            |                                   |
 | Static Mesh             | SM_        |            |                                   |
 | Skeletal Mesh           | SK_        |            |                                   |
-| Texture                 | T_         | _?         | See [Textures](#Textures)       |
+| Texture                 | T_         | _?         | See [Textures](#textures)       |
 | Particle System         | PS_        |            |                                   |
 | Widget Blueprint        | WBP_       |            |                                   |
 

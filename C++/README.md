@@ -48,7 +48,7 @@ Use ``const`` when possible for
 - pointer or reference function parameters
 
 Do _not_ use const in the following situations:
-- passing parameters by value (see [Parameter Passing](#Parameter-Passing))
+- passing parameters by value (see [Parameter Passing](#parameter-passing))
 - return values:
     ```cpp
     // Bad - returning a const array
