@@ -6,13 +6,13 @@ These asset naming convention is a modified version of the [Gamemakin Asset Conv
 
 All asset names follow the basic syntax ``Prefix_BaseName_Variant_Counter_Suffix``:
 
-| Part | Mandatory/Optional | Description |
-|-|-|-|
-| ``Prefix`` | mandatory | Type based prefix (see below) |
-| ``BaseName`` | mandatory | Easily recognizable name that identifies the asset and related assets. This is usually what you would colloquially call the object (e.g. Sunflower, Bench, Rock, etc) |
-| ``Variant`` | optional | Unique variants of the asset with a clear name (e.g. Diry, Clean, Broken, Glowing) |
-| ``Counter`` | optional | If you have multiple assets with matching base name and variant or if you can't reasonably find variant names, you can use a two digit counter. For consistency you should always use two digits. If you have more than 99 assets of the same type you should usually create other groupings instead of continuing to increase the counter. |
-| ``Suffix`` | optional _or_ mandatory | Type based suffix (see below) |
+| Part         | Mandatory/Optional | Description                        |
+|--------------|--------------------|------------------------------------|
+| ``Prefix``   | mandatory          | Type based prefix (see below)      |
+| ``BaseName`` | mandatory          | Easily recognizable name that identifies the asset and related assets. This is usually what you would colloquially call the object (e.g. Sunflower, Bench, Rock, etc) |
+| ``Variant``  | optional           | Unique variants of the asset with a clear name (e.g. Diry, Clean, Broken, Glowing) |
+| ``Counter``  | optional           | If you have multiple assets with matching base name and variant or if you can't reasonably find variant names, you can use a two digit counter. For consistency you should always use two digits. If you have more than 99 assets of the same type you should usually create other groupings instead of continuing to increase the counter. |
+| ``Suffix``   | optional _or_ mandatory | Type based suffix (see below) |
 
 ## Prefix and Suffix
 
@@ -34,7 +34,7 @@ Placing this crucial information at the same positions in the file name makes it
 | Material                | M_         |            |                                   |
 | Static Mesh             | SM_        |            |                                   |
 | Skeletal Mesh           | SK_        |            |                                   |
-| Texture                 | T_         | _?         | See [Textures](#textures)       |
+| Texture                 | T_         | _?         | See [Textures](#textures)         |
 | Particle System         | PS_        |            |                                   |
 | Widget Blueprint        | WBP_       |            |                                   |
 
