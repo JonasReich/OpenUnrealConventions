@@ -1,4 +1,4 @@
-<sub>[Home](../README.md) / [Blueprint](./README.md) / Asset Naming </sub>
+<sub>[Home](../README.md) / [Assets](./README.md) / Naming </sub>
 
 # Asset Naming
 
