@@ -14,8 +14,9 @@ The coding conventions are a work-in-progress project. This list shows the curre
 
 | domain    | progress |
 |-----------|----------|
-| C++       | 90%      |
+| Assets    | 90%      |
 | Blueprint | 5%       |
+| C++       | 90%      |
 | Python    | 0%       |
 
 ## General Naming Rules
