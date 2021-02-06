@@ -19,6 +19,23 @@ The coding conventions are a work-in-progress project. This list shows the curre
 | C++       | 90%      |
 | Python    | 0%       |
 
+## General Structural Rules
+
+### Structure Content with the Uninformed Developer in Mind
+
+You probably are not the only developer in a project. And even if you are you will most certainly come back to a piece of code, a blueprint or an asset folder that you haven't seen in a while. It is very likely that you will forget and re-learn half of the things you worked on over the course of a project.
+
+Creating a structure that is easily parse-able for an uninformed viewer is crucial for project maintainability. And all other rules are based on this very thought.
+
+This should usually manifest in thinking about the **big picture first** and structuring your content **from big to small**.
+
+### The Magical Number Seven (Plus or Minus Two)
+
+There is a [rule in psychology](https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two) stating humans cannot easily separate and memorize groups of more than seven objects (plus minus seven).
+We can apply this rule to our C++ code and Blueprints saying you should introduce logical groupings once you have more than 7-10 variables, functions, etc.
+
+Of course this all depends on the context, but it's a good rule of thumb to recognize code, blueprints, etc that are too crowded.
+
 ## General Naming Rules
 
 **Always use PascalCase.** This applies for assets, folder names, variable names, function names, you name it.
