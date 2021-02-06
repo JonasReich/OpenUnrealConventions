@@ -3,10 +3,10 @@
 These coding conventions should serve as a foundation for all aspects of Unreal Engine programming. This means they cover not only C++ code, but also Blueprints and Python.
 
 ## Subpages
-- ### [Asset Conventions](./UnrealAssets/README.md)
-- ### [Blueprint Conventions](./Blueprint/README.md)
-- ### [C++ Coding Conventions](./C++/README.md)
-- ### [Python Coding Conventions](./Python/README.md)
+### [Asset Conventions](./UnrealAssets/README.md)
+### [Blueprint Conventions](./Blueprint/README.md)
+### [C++ Coding Conventions](./C++/README.md)
+### [Python Coding Conventions](./Python/README.md)
 
 ## WIP Status
 
@@ -15,7 +15,7 @@ The coding conventions are a work-in-progress project. This list shows the curre
 | domain    | progress |
 |-----------|----------|
 | Assets    | 90%      |
-| Blueprint | 5%       |
+| Blueprint | 50%      |
 | C++       | 90%      |
 | Python    | 0%       |
 

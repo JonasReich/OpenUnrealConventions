@@ -2,7 +2,7 @@
 
 # Blueprint Conventions
 
-_All Blueprint screenshots on this page were based on the official "First Person" sample content pack by Epic Games. Many of their sample Blueprints do not meet the standards for this Blueprint convention._
+_All Blueprint screenshots on this page were based on the FirstPersonCharacter from the official "First Person" sample content pack by Epic Games. Many of their sample Blueprints do not meet the standards for this Blueprint convention, so it was a good foundation for the sample screenshots._
 
 ## Naming
 
@@ -143,6 +143,6 @@ However you should only use subdued colors for regular comment boxes, so you can
 For self contained event graphs (e.g. a sub-simulation) or events that may be logically grouped together it can be worthwhile to add separate event graphs. Common contexts for this are
 - Input event graphs
 - Sound event graphs
-- VFX event grpahs
+- VFX event gaphs
 
 ![Separate Event Graphs](img/08_EventGraphs.png)
