@@ -78,3 +78,10 @@ These coding conventions are based on a mixture of the following coding conventi
     - Aesir Interactive Unreal C++ Coding Conventions (not public)
 - Blueprint Coding Conventions
     - [Gamemakin UE4 Style Guide](https://github.com/Allar/ue4-style-guide) aka "Allar style guide"
+
+## License
+
+The Open Unreal Conventions are licensed under the [MIT license](LICENSE.md).
+
+You are invited to create pull-requests to the github source for any additions or modifications you make to the guidelines:
+https://github.com/JonasReich/OpenUnrealConventions
