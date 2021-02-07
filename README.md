@@ -36,6 +36,18 @@ We can apply this rule to our C++ code and Blueprints saying you should introduc
 
 Of course this all depends on the context, but it's a good rule of thumb to recognize code, blueprints, etc that are too crowded.
 
+## General Programming Rules
+
+For all logical programming no matter the language (Blueprints, C++, Python) you must always adhere to the following basic rules:
+
+1. Leave a file at least as clean as you found it
+2. Fix errors when you stumble across them 
+3. Don't submit any broken code including code that you know throws errors or warnings
+4. Your code must always be clean, well formatted and properly documented
+5. You must always stick to [SOLID](https://en.wikipedia.org/wiki/SOLID) principles and write [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) code
+6. Consistency is king. Stick to existing conventions and establish new ones as soon as you do something not covered by conventions.
+7. Never leave any dead/unreachable/commented-out code
+
 ## General Naming Rules
 
 **Always use PascalCase.** This applies for assets, folder names, variable names, function names, you name it.

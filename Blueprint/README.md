@@ -29,8 +29,19 @@ The same goes for functions:
 
 ## Blueprint Graph Organization
 
-### Tight Straight Nodes
-Execution pin connections should be as straight as possible. Nodes should be placed tightly without big surrounding space to make code compact without nodes overlapping to keep it readable.
+### All Functions Must Have Return Nodes
+
+Functions can theoretically be created without return nodes if the function does not return any values.
+
+However, ending execution flow with return nodes in all cases has the advantage that the Blueprint compiler will check and warn you for all execution paths that do not end in a return node. This can help catching execution flow bugs early, e.g. after you added a new case to an enum and have to adjust switch-case statements.
+
+### Make Functions Private by Default
+
+Functions that are not required to be public should be set to private so they cannot be called by accident or in the wrong context.
+
+### Tight Straight Wire Connections
+
+Execution pin wire connections should be as short and straight as possible. Nodes should be placed tightly without big surrounding space to make code compact without nodes overlapping to keep it readable.
 
 Before:
 
@@ -41,6 +52,7 @@ After:
 ![After](img/01_TightStraightNodes_After.png)
 
 ### Collapse Big Events
+
 Big event chains should be collapsed to functions. This is especially true for the event graph that should just contain some "entry" events that start an execution chain (e.g. a player input) and pass everything else to functions, etc.
 
 Before:
@@ -62,6 +74,7 @@ Thre are three methods to collapse graphs all of which have advantages and disad
 | Collapse to **Macro**    | Use with different variable references. Multiple execution pins. Reusable. | No compilation/errors of macro itself. Only when used. Harder to debug. No local variables. | Reusable flow control with multiple execution pins. |
 
 ### Avoid Overlaps
+
 This is especially crucial for nodes and execution paths.
 
 Before:
@@ -86,7 +99,7 @@ After:
 
 ### Align Nodes
 
-Aligning multiple nodes is easily possible by selecting them and using the shift + [W/A/S/D] shortcuts.
+Aligning multiple nodes is easily possible by selecting them and using the shift + [W/A/S/D] shortcuts. In general alignment should focus on aligning pins and wires (esp. execution pins) first as some nodes have varying heights.
 
 Before:
 

@@ -1,6 +1,12 @@
-<sub>[Home](../README.md) / [C++](./README.md) / Comments </sub>
+<sub>[Home](../README.md) / [C++](./README.md) / Documentation </sub>
 
-# C++ Comments Conventions
+# C++ Documentation Conventions
+
+These conventions focus mostly on source code comments as 90% of your code's documentation will be written in this format.
+
+For API documentation it should also be totally sufficient. Even if you need some external copy of your API documentation, e.g. because you're writing a publicly available plugin, your primary source for this external copy should stem from your source code (e.g. generated via Doxygen), so they don't easily get out of sync.
+
+In addition to this you should have a separate archive for additional documents and diagrams that supplement the source code based docs.
 
 ## General Commenting Rules
 - Comments should aid the reader and add information to the source code
@@ -125,3 +131,16 @@ void FFoo::Bar()
     const int32 NumSharesToBuy = 42;
 }
 ```
+
+## Reflection Metadata
+
+The UE4 reflection system allows to add metadata to uproperties and ufunctions. Most of the metadata is optional to use on a per-case basis, but we reccommend to always add the following data:
+
+- Category
+    - Add category for blueprint accessible properties and functions if you have more than 7 of them in your custom type
+    - Add category for all static blueprint functions
+    - Prefix all static blueprint functions categories with your project or plugin name, e.g.
+        ```C++
+        UFUNCTION(BlueprintCallable, Category = "Foo Plugin|Screen Rendering")
+        static UTexture* RenderMaterial(UMaterial* Material, int32 TextureSize);
+        ```

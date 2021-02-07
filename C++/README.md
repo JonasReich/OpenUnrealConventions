@@ -4,6 +4,7 @@
 
 ## [Code Organization](CodeOrganization.md)
 ## [Naming](Naming.md)
+## [Documentation](Documentation.md)
 ## [Formatting](Formatting.md)
 
 ## STL / std Namespace

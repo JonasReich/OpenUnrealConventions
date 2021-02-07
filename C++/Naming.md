@@ -119,10 +119,14 @@ bool bPendingDestruction; // missing verb
 
 - Function names are verbs
 - The verb describes the function's effect or return value if the function has no side effects
-- A function that only returns a boolean should be named like a boolean field without the b prefix
+- Const functions that only return a boolean should be named like a question (mostly Has... or Is... prefix) which matches boolean field naming without the b prefix
+- Non-const functions that do not just determine and return a value but also modify an objects state should reflect this (e.g. Check... instead of Get..., Has... or Is...)
 - UFunctions interacting with Blueprints should follow some special rules:
     - BlueprintImplementableEvents should be prefixed with Blueprint
     - The native C++ equivalent of a blueprint event should be prefixed with Native
+- Property replication events are called OnRep_VariableName, e.g. OnRep_HealthPoints
+- Delegate bound functions begin with Handle prefix (see [Events and Delegates](#events-and-delegates))
+- RPCs (remote procedure calls) are prefixed with their target, so either Server_, Client_ or Multicast_
 
 ## Function Parameters
 
@@ -132,7 +136,7 @@ Parameters that are passed in or in and out should be prefixed with In or InOut 
 bool Trace(FHitResult& OutHitResult);
 ```
 
-## Events/Delegates
+## Events and Delegates
 
 _The following rules apply to all types of delegates in Unreal C++ (single cast delegate, multicast delegates, dynamic multicast delegates and events)._
 
