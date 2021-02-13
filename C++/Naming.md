@@ -2,6 +2,15 @@
 
 # C++ Naming Conventions
 
+## File Names
+
+- All files have the name of the namespace or main type without type prefix (e.g. ``Actor.h`` for AActor)
+- All cpp files must have a header file with the same name and path relative to the module directory or public/private folder
+    - Only exception: Test files and automation specs
+- All tests are contained in a cpp file ending in Tests, e.g. ``ActorTests.cpp``
+    - Tests may have a header file to declare types that are only required for the tests in the cpp file, but this should be rarely needed and avoided
+- Automation specs are defined in files that use the name of the type that is used as a base and end in ``.spec.cpp``, e.g. ``Actor.spec.cpp``
+
 ## Capitalization
 
 - All names of all types, fields and functions use PascalCase with 2 exceptions:
@@ -19,18 +28,54 @@
 
 ## Type Prefixes and Suffixes
 
- Abstract base classes may be suffixed with Base
+- Abstract base classes may be suffixed with Base
 - Unreal Header Tool enforces the following prefixes for reflected types:
 
-    | Prefix | Type |
-    |-|-|
-    | T | Template classes |
-    | U | UObject child classes |
-    | A | AActor child classes |
-    | S | SWidget child classes |
-    | E | Enums (only typenames, enum items have no prefix!) |
-    | I | UInterface classes |
-    | F | Structs and all classes not covered by the rules above |
+    | Prefix | Type                  |
+    |--------|-----------------------|
+    | T      | Template classes      |
+    | U      | UObject child classes |
+    | A      | AActor child classes  |
+    | S      | SWidget child classes |
+    | E      | Enums (only typenames, enum items have no prefix!) |
+    | I      | UInterface classes    |
+    | F      | Structs and all classes not covered by the rules above |
+
+- In addition to this the following prefix convention can be found in the engine:
+
+    | Prefix | Type                           |
+    |--------|--------------------------------|
+    | C      | Concepts (special type traits) |
+
+- Blueprint function libraries are suffixed with Library, e.g. ``UMyPluginLibrary``, ``URegexLibrary``, etc.
+
+## Template Parameters
+
+- Type template parameters are suffixed with ``Type``. Unless you have a single unambiguous type, in which case you can use the single letter ``T``.
+    ```cpp
+    // good - the type names state clearly what purpose they serve
+    template<typename ElementType, typename AllocatorType>
+    class TArray {};
+
+    // good - it's unambiguous that T is the target type after the cast
+    template<typename T>
+    T* Cast(UObject* Object);
+    
+    // bad - what are T and U?
+    template<typename T, typename U>
+    class TArray {};
+
+    // bad - at the class header it's clear that Element is a type template parameter.
+    // This information is lost in the template body, so suffixing with 'Type' is required.
+    template<typename Element, typename Allocator>
+    class TArray {};
+    ```
+- Non-type template parameters, e.g. integers have no special prefix/suffix notation, so the names are indistinguishable from static member variables, e.g. ``TInlineAllocator::NumInlineElements``
+- Template template parameters (C++17 feature) are not supported by all compilers and should therefore not be used. If they do become usable in the future we're reccommending calling them TFooType, e.g.
+    ```cpp
+    template<typename ElementType, template<typename> typename TContainerType>
+    class TMyContainerWrapper {};
+    ```
 
 ## Type Aliases
 
@@ -44,6 +89,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         // good
         using FOptionTextFilter = TTextFilter< TSharedPtr<FAvailableStringTable> >;
         using FAudioSamplePool = TMediaObjectPool<FAudioSample>;
+        
         // bad
         using TOptionTextFilter = TTextFilter< TSharedPtr<FAvailableStringTable> >;
         using AudioSamplePool = TMediaObjectPool<FAudioSample>;
@@ -53,6 +99,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         // good
         template <typename AttributeType>
         using TVertexAttributeIndicesArray = TAttributeIndicesArray<AttributeType, FVertexID>;
+        
         // bad
         template <typename AttributeType>
         using FVertexAttributeIndicesArray = TAttributeIndicesArray<AttributeType, FVertexID>;
@@ -65,6 +112,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         {
             // good
             using IteratorType = TNetworkSimBufferIterator<TNetworkSimContiguousBuffer<ElementType, NumElements>, ElementType>
+           
             // bad
             using IteratorType = TNetworkSimBufferIterator<TNetworkSimContiguousBuffer<ElementType, NumElements>, ElementType>
         }
@@ -74,6 +122,7 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         // good
         using FDataPtr = TSharedPtr<TArray<uint8>>;
         using IAssetTreeItemPtr = TSharedPtr<IAssetTreeItem>;
+       
         // bad
         using TDataPtr = TSharedPtr<TArray<uint8>>;
         using AssetTreeItemPtr = TSharedPtr<IAssetTreeItem>;
@@ -92,9 +141,10 @@ Type aliases defined via typedefs or using declarations follow the regular type 
         ```
     - Type for type traits that return a type - implemented either as template or struct
         ```cpp
-        //good
+        // good
         template <> struct TUnsignedIntType<4> { using Type = uint32; };
         struct FHairStrandsMeshTrianglePositionFormat { using Type = FVector4; }
+        
         // bad - Type alias outside of a type trait context
         using Type = TSharedPtr<TArray<uint8>>;
         ```
