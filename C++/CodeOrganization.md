@@ -10,6 +10,13 @@ Base rules for all code organization:
 
 - Use public/private folders for plugin source code to separate public header files from private source files
 - Consider grouping POD type declarations and interface declarations in separate folders
+- Public and private folders should have mirrored subfolders and filenames wherever applicable so related header and source files can be found at matching relative paths, e.g.
+    - Header: ``Public/Components/InventoryComponent.h``<br>Source: ``Private/Components/InventoryComponent.cpp``
+    - Header: ``MyGameModule/Traffic/VehicleMovement.h``<br>Source: ``MyGameModule/Traffic/VehicleMovement.cpp``
+- Use similar names as engine source code for folders if you write code that could also be part of the engine on project/plugin level, e.g.
+    - Type traits -> Traits/
+    - Containers -> Containers/
+    - Math types and utilities -> Math/
 
 ## Header File Organization
 
@@ -76,3 +83,12 @@ Use the following sorting of members:
 - using namespace rules:
     - Do not put "using" namespace declarations in the global scope, even in a .cpp file (it will cause problems with UE4s "unity" build system.)
     - It is fine to put using declarations within another namespace or function body
+
+## Utility Functions
+
+- Utility functions to be used for similar things should be grouped together
+    - as static class members of a class called FFooUtils
+    - OR as free functions in a namespace called FooUtils
+
+- Very isolated utility functions, especially template functions that replicate the functionality of std functions can go into global namespace, e.g. from engine source code: ``MoveTemp<T>()``, ``StaticCast<T>()``, ``NewObject<T>()``, etc.
+
