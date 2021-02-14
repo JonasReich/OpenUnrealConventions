@@ -31,21 +31,21 @@
 - Abstract base classes may be suffixed with Base
 - Unreal Header Tool enforces the following prefixes for reflected types:
 
-    | Prefix | Type                  |
-    |--------|-----------------------|
-    | T      | Template classes      |
-    | U      | UObject child classes |
-    | A      | AActor child classes  |
-    | S      | SWidget child classes |
-    | E      | Enums (only typenames, enum items have no prefix!) |
-    | I      | UInterface classes    |
+    | Prefix | Type                                                   |
+    |--------|--------------------------------------------------------|
+    | T      | Template classes                                       |
+    | U      | UObject child classes                                  |
+    | A      | AActor child classes                                   |
+    | S      | SWidget child classes                                  |
+    | E      | Enums (only typenames, enum items have no prefix!)     |
+    | I      | UInterface classes                                     |
     | F      | Structs and all classes not covered by the rules above |
 
 - In addition to this the following prefix convention can be found in the engine:
 
-    | Prefix | Type                           |
-    |--------|--------------------------------|
-    | C      | Concepts (special type traits) |
+    | Prefix | Type                                                   |
+    |--------|--------------------------------------------------------|
+    | C      | Concepts for TModels trait                             |
 
 - Blueprint function libraries are suffixed with Library, e.g. ``UMyPluginLibrary``, ``URegexLibrary``, etc.
 
