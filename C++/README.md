@@ -17,6 +17,7 @@ For all essential functions there are unreal specific substitues including but n
 |----------------------|---------------------------------------------------|
 | ``static_cast<T>()`` | ``StaticCast<T>()`` or ``Cast<T>()`` for UObjects |
 | ``move<T>()``        | ``MoveTemp<T>()``                                 |
+| ``forward<T>()``     | ``Forward<T>()``                                  |
 | ``unique_ptr<T>``    | ``UniquePtr<T>``                                  |
 | ``shared_ptr<T>``    | ``SharedPtr<T>``                                  |
 | ``weak_ptr<T>``      | ``WeakPtr<T>``                                    |
