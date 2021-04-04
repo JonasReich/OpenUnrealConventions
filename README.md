@@ -72,7 +72,7 @@ ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz0123456789_
 
 **Keep names short and concise.** Short _and_ readable is the key here. Other devs still need to understand what you mean. Unreal enforces a 180 character path limit for all source files and assets, so keeping file and folder names short is essential. It also makes file lists, debug logs, etc easier to read. This last point also applies to function and variable names.
 
-## Sources
+## References
 
 These coding conventions are based on a mixture of the following coding conventions:
 - C++ Coding Conventions
@@ -83,9 +83,30 @@ These coding conventions are based on a mixture of the following coding conventi
 - Blueprint Coding Conventions
     - [Gamemakin UE4 Style Guide](https://github.com/Allar/ue4-style-guide) aka "Allar style guide"
 
+## Further Reading
+
+The following sources are reccommended reading material for their respective topic:
+
+- General
+    - [Unreal Engine 4 Documentation](https://docs.unrealengine.com/en-US/index.html) - The official docs should be your first address for everything Unreal related. It used to be quite outdated with gaping holes, but since UE4.24 onwards the documentation has caught up with some of the latest developments of the Engine itself.
+
+        Still not everything is documented in here, but for everything that is, it's usually the best introduction into each respective topic if not the most comprehensive.
+
+    - Unreal Engine 4 Source Code - The engine's source code is shipped with every UE4 installation, so whenever you want to know what's really going on under the hood, see examples how a certain system/function should be used, etc. this is the place to look.
+
+        The source code is really well documented (at least in the important places - some plugins could improve) and will often times contain better comments + explanations besides the code itself than the online documentation.
+
+- Multiplayer / Networking
+    - [Network Compendium by Cedric 'eXi' Neukrichen](http://cedric-neukirchen.net/Downloads/Compendium/UE4_Network_Compendium_by_Cedric_eXi_Neukirchen.pdf) - Good overview of everything network related. Explains both the high level networking architecture but also shows some low level code snippets that will cover 80% of your net-code needs.
+
+- Gameplay Ability System
+    - [GASDocumentation by tranek](https://github.com/tranek/GASDocumentation) - Very comprehensive breakdown of gameplay ability system with many practical examples, code snippets and reccommendations for different use cases (including performance optimization opportunities).
+
 ## License
 
 The Open Unreal Conventions are licensed under the [MIT license](LICENSE.md).
+
+## Contributing
 
 You are invited to create pull-requests to the github source for any additions or modifications you make to the guidelines:
 https://github.com/JonasReich/OpenUnrealConventions
