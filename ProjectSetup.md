@@ -114,7 +114,6 @@ The editor settings can be set to default and shared across the entire team. It'
     * Use Small Tool Bar Icons
     * Set "Asset Editor Open Location" to ``Last Docked Window or New Window``
 * Experimental
-    * Enable Details Panel Favorites
     * Blueprint Break on Exceptions
     * Base Classes to Allow Recompiling During Play in Editor
 * Keyboard Shortcuts
@@ -164,7 +163,6 @@ bDisableAllTutorialAlerts=True
 bEnabled=True
 
 [/Script/UnrealEd.EditorExperimentalSettings]
-bEnableFavoriteSystem=True
 bBreakOnExceptions=True
 ;Consider adding base classes for which to allow recompile during PIE:
 +BaseClassesToAllowRecompilingDuringPlayInEditor=/Script/Engine.Actor
