@@ -21,6 +21,10 @@ The coding conventions are a work-in-progress project. This list shows the curre
 | C++       | 90%      |
 | Python    | 0%       |
 
+## Project Setup
+
+The [project setup page](ProjectSetup.md) describes some reccommended steps when setting up new Unreal projects, i.e. which settings to configure before starting to add code and content.
+
 ## General Structural Rules
 
 ### Structure Content with the Uninformed Developer in Mind
