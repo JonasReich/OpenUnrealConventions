@@ -271,17 +271,18 @@ body {
   
 
 /* Adjusted widths for full screen usage */
+@media print, screen and (min-width: 960px) {
+  .wrapper {
+      width: 100%;
+      max-width: 1200px;
+  }
 
-.wrapper {
-    width: 100%;
-    max-width: 1200px;
-}
+  header, footer {
+      width: 15%;
+  }
 
-header, footer {
-    width: 15%;
-}
-
-section {
-    width: 80%;
-    max-width: 800px;
+  section {
+      width: 80%;
+      max-width: 800px;
+  }
 }
