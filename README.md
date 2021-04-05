@@ -5,6 +5,7 @@ The Open Unreal Conventions are an open source set of coding and asset conventio
 These conventions should serve as a foundation for all aspects of Unreal Engine development. This means they cover not only C++ code, but also Blueprints, Python and Asset creation. Over time we might also add some conventions for complementary tools like batch scripts for building Unreal Engine games.
 
 ## Subpages
+### [Project Setup](./ProjectSetup.md)
 ### [Asset Conventions](./UnrealAssets/README.md)
 ### [Blueprint Conventions](./Blueprint/README.md)
 ### [C++ Coding Conventions](./C++/README.md)
@@ -20,10 +21,6 @@ The coding conventions are a work-in-progress project. This list shows the curre
 | Blueprint | 50%      |
 | C++       | 90%      |
 | Python    | 0%       |
-
-## Project Setup
-
-The [project setup page](ProjectSetup.md) describes some reccommended steps when setting up new Unreal projects, i.e. which settings to configure before starting to add code and content.
 
 ## General Structural Rules
 

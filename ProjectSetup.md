@@ -15,7 +15,7 @@ These reccommendations are only relevant from the unreal project root downwards.
 1. Consider ignoring binaries as well (Binaries/)
 1. Ignore all local config files of your development tools and IDEs (e.g. .vs/)
 
-```python (not really, but the highlighting matches)
+```python
 # Sample .gitignore contents:
 
 # UE4 generated files
