@@ -1,4 +1,4 @@
-<sub>[Home](../README.md) / Python </sub>
+<sub>[Home](./README.md) / Python </sub>
 
 # Python Coding Conventions
 

@@ -9,18 +9,19 @@ These conventions should serve as a foundation for all aspects of Unreal Engine 
 ### [Asset Conventions](./UnrealAssets/README.md)
 ### [Blueprint Conventions](./Blueprint/README.md)
 ### [C++ Coding Conventions](./C++/README.md)
-### [Python Coding Conventions](./Python/README.md)
+### [Python Coding Conventions](./Python.md)
 
 ## WIP Status
 
 The coding conventions are a work-in-progress project. This list shows the current status of the sub-conventions:
 
-| domain    | progress |
-|-----------|----------|
-| Assets    | 90%      |
-| Blueprint | 50%      |
-| C++       | 90%      |
-| Python    | 100%     |
+| domain        | progress |
+|---------------|----------|
+| Project Setup | 50%      |
+| Assets        | 90%      |
+| Blueprint     | 50%      |
+| C++           | 90%      |
+| Python        | 100%     |
 
 ## General Structural Rules
 
