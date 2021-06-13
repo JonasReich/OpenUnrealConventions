@@ -106,5 +106,4 @@ The Open Unreal Conventions are licensed under the [MIT license](LICENSE.md).
 
 ## Contributing
 
-You are invited to create pull-requests to the github source for any additions or modifications you make to the guidelines:
-https://github.com/JonasReich/OpenUnrealConventions
+You are invited to create [pull-requests](https://github.com/JonasReich/OpenUnrealConventions/pulls) to the github source for any additions or modifications you make to the guidelines.
