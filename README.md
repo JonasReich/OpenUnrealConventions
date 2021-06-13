@@ -20,7 +20,7 @@ The coding conventions are a work-in-progress project. This list shows the curre
 | Assets    | 90%      |
 | Blueprint | 50%      |
 | C++       | 90%      |
-| Python    | 0%       |
+| Python    | 100%     |
 
 ## General Structural Rules
 
