@@ -33,7 +33,7 @@ Remember: This is the bare minimum to get started that will prevent accidental s
 
 ## Plugins and Target Platforms
 
-By default a lot of plugins are enabled for your editor. Depending on your dev hardware this will cause noticeable delays when launching the editor. This is unfortunate when you consider that you will probably only ever need a fraction of plugins that are enabled by default.
+By default a lot of plugins are enabled for your editor. Depending on your development hardware this will cause noticeable delays when launching the editor. This is unfortunate when you consider that you will probably only ever need a fraction of plugins that are enabled by default.
 
 We reccommend to switch off the following plugins for new projects:
 
@@ -44,6 +44,10 @@ We reccommend to switch off the following plugins for new projects:
 * Plugins for Input Hardware you do not intend to support (esp. Leap Motion)
 * Online Subsystems if you are developing an offline / single player game
 * IDE integrations you don't plan to use, e.g. XCode, Rider, KDevelop, CLion, etc
+
+### Open Unreal Utilities
+
+Shameless plug for our sibling project: Consider adding the [Open Unreal Utilities](https://github.com/JonasReich/OpenUnrealUtilities) plugin to your C++ projects. It also contains many Blueprint utilities, but you need to compile the plugin from source, so it's not suitable for Blueprint only projects.
 
 ## Project Settings
 
