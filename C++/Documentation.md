@@ -20,6 +20,7 @@ In addition to this you should have a separate archive for additional documents 
 Comments that describe API should follow the following style
 
 - Type docs used for classes, structs, enums, namespaces:
+    
     ```cpp
     /**
      * GameMode is a subclass of GameModeBase that behaves like a multiplayer match-based game.
@@ -32,15 +33,19 @@ Comments that describe API should follow the following style
         ...
     };
     ```
+    
 - Function docs for global functions and member functions
     - Single line docs
+        
         ```cpp
         /** Returns true if the match state is InProgress or other gameplay state */
         UFUNCTION(BlueprintCallable, Category="Game")
         virtual bool IsMatchInProgress() const;
         ```
+        
     - Multi-line docs
     - Multi-line docs with parameter descriptions. Parameter descriptions may be omitted (even for individual parameters) if they add no value.
+        
         ```cpp
         /**
          * Called from CommitMapChange before unloading previous level.
@@ -50,9 +55,11 @@ Comments that describe API should follow the following style
          */
         virtual void PreCommitMapChange(const FString& PreviousMapName, const FString NextMapName);
         ```
+        
 - Member fields should be documented in the same way as functions
 - Enum cases follow the same rules, but they may also use single line comments
     - either above the variables/cases
+        
         ```cpp
         /** Possible state of the current match, where a match is all the gameplay that happens on a single map */
         namespace MatchState
@@ -71,7 +78,9 @@ Comments that describe API should follow the following style
             extern ENGINE_API const FName Aborted;
         }
         ```
+        
     - or behind the values and left aligned:
+        
         ```cpp
         /** Possible state of the current match, where a match is all the gameplay that happens on a single map */
         namespace MatchState
@@ -90,6 +99,7 @@ Comments that describe API should follow the following style
 Subsections, headings, etc. can use blocks of ``// single line comments`` like this:
 
 - Headings:
+    
     ```cpp
     //////////////////////////////////////////////////////////////////////////
     /// Big Heading: always 74 characters wide
@@ -105,7 +115,9 @@ Subsections, headings, etc. can use blocks of ``// single line comments`` like t
     // Small Heading + single line
     //-----------------------------
     ```
+    
 - Long separators (e.g. for separating test cases in a single test file)
+    
     ```cpp
     //////////////////////////////////////////////////////////////////////////
     ```
@@ -113,17 +125,20 @@ Subsections, headings, etc. can use blocks of ``// single line comments`` like t
     ```cpp
     //------------------------------------------------------------------------
     ```
+    
 - Virtual function override groups:
+    
     ```cpp
     // - Parent Class
     virtual void Foo() override;
     virtual void Bar() override;
     // --
     ```
-
+    
 ### Inline comments
 
 Comments that are placed inline in function definitions and source files should usually use blocks of ``// single line comments``:
+
 ```cpp
 void FFoo::Bar()
 {
@@ -140,6 +155,7 @@ The UE4 reflection system allows to add metadata to uproperties and ufunctions. 
     - Add category for blueprint accessible properties and functions if you have more than 7 of them in your custom type
     - Add category for all static blueprint functions
     - Prefix all static blueprint functions categories with your project or plugin name, e.g.
+        
         ```C++
         UFUNCTION(BlueprintCallable, Category = "Foo Plugin|Screen Rendering")
         static UTexture* RenderMaterial(UMaterial* Material, int32 TextureSize);
