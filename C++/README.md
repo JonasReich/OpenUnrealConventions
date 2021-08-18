@@ -155,7 +155,7 @@ To ensure your module's header files can be included by other modules, you shoul
 ## Fundamental Type Aliases
 
 Instead of using built-in types like int and short, the UE4 typedefs should be used:
-- NULLPTR_TYPE for the type of nullptr, the nullptr should still be used
+- NULLPTR_TYPE for the type of nullptr, the nullptr literal should still be used
 - TCHAR for character
 - uint8, uint16, uint32, uint64 for unsigned integers
 - int8, int16, int32, int64 for signed integers
@@ -164,3 +164,17 @@ Standard types that may be used:
 - bool
 - float
 - double
+
+## Literals
+
+String and number literals may be used. Do not use raw string literals (``"foo"``, ``L"bar"``), but instead always use the ``TEXT("foo")`` macro to surround string literals, unless they are fed into other macros, such as ``INVTEXT("My culture invariant")``. 
+
+If you need FTexts for UI display, never convert from FString, always write localizable FTexts using ``LOCTEXT()``, or culture invariants using ``INVTEXT()`` for dev UI that should not be translated:
+
+```cpp
+// localizable button label
+FText ButtonLabel = LOCTEXT("ButtonLabel", "Press Me!");
+
+// culture invariant used for DEV UI, so it doesn't end up in loca kits
+FText DevButtonLabel = LOCTEXT("DevButtonLabel", "Press Me! (only if you're a dev)");
+```
