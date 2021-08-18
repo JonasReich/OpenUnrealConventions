@@ -15,6 +15,8 @@ if (condition)
     continue;
 ```
 
+## Line Breaks
+
 Always place braces on new lines:
 ```cpp
 if (condition)
@@ -25,6 +27,27 @@ else
 {
     statements;
 }
+```
+
+If you're using multiple inheritance, you should place all super classes after the first one one a new line:
+
+```cpp
+class UFooBarComponent : public UActorComponent,
+    public IFooInterface,
+    public IBarInterface
+{
+    // ...
+};
+```
+
+Break very long lines (more than 100-200 characters) wherever it makes sense. Indent the following lines of the same statement.
+
+One of the most common cases for are log lines:
+
+```cpp
+UE_CLOG(bShouldLogError, LogFooCategory, Error, TEXT("An error occured while reading the coding conventions! (Source Actor: %s) "
+    "This can happen if you are reading too fast (current reading speed: %f)"),
+    *SourceActor->GetName(), SourceActor->ReadingSpeed);
 ```
 
 ## Indentation
