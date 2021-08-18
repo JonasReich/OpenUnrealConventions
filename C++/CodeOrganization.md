@@ -8,6 +8,9 @@ Base rules for all code organization:
 
 ## File Organization
 
+- Prefer creating new files for each type over bundling multiple types together.
+- Prefer to create header files over delcaring types in cpp files. Espcially if the declaration is longer than 5-10 lines
+    - One exception: Utility types used for tests (e.g. mocks) may be created at the beginning of the test file.
 - Use public/private folders for plugin source code to separate public header files from private source files
 - Consider grouping POD type declarations and interface declarations in separate folders
 - Public and private folders should have mirrored subfolders and filenames wherever applicable so related header and source files can be found at matching relative paths, e.g.
