@@ -13,9 +13,7 @@
 
 ## Capitalization
 
-- All names of all types, fields and functions use PascalCase with 2 exceptions:
-    1. Loop counters i, j, k
-    2. Mathematical coordinates (x, y, z) or color components (r,g,b,a)
+- All names of all types, fields and functions use PascalCase with a single exceptions: Loop counters i, j, k
 - Macros use UPPER_CASE
 - Abbreviations are usually written in pascal case: Http, Hdmi, Usb
 - Abbreviations for module names to avoid naming conflicts may use upper case prefix, e.g. 
@@ -163,6 +161,31 @@ FSkin Skin;
 // bad
 bool IsOutThere;          // missing prefix
 bool bPendingDestruction; // missing verb
+```
+
+### Shadowing
+
+Shadowed fields/variables are not allowed. MSVC allows variables to be shadowed from an outer scope, but GCC will not allow this, with good reason: It makes references ambiguous to a reader and hides mistakes.
+
+For example, there are four variables with the name ``Count`` in this member function:
+
+```cpp
+int32 Count = 42;
+
+class FSomeClass
+{
+public:
+    void Func(const int32 Count)
+    {
+        for (int32 Count = 0; Count != 10; ++Count)
+        {
+            // Use Count
+        }
+    }
+
+private:
+    int32 Count = 1000;
+};
 ```
 
 ## Functions
