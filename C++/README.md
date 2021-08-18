@@ -178,3 +178,7 @@ FText ButtonLabel = LOCTEXT("ButtonLabel", "Press Me!");
 // culture invariant used for DEV UI, so it doesn't end up in loca kits
 FText DevButtonLabel = LOCTEXT("DevButtonLabel", "Press Me! (only if you're a dev)");
 ```
+
+## Log Macros
+
+Never use the LogTemp log category for anything other than temporary debug code. Always use/create an appropriate log cateogry using one of the declare/define log cateogry macros instead (see [UE4 Community wiki](https://unrealcommunity.wiki/logging-lgpidy6i)).
