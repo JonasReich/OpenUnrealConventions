@@ -209,6 +209,13 @@ Parameters that are passed in or in and out should be prefixed with In or InOut 
 bool Trace(FHitResult& OutHitResult);
 ```
 
+When calling those functions, you should use the ``OUT`` macro to mark parameters that are passed by reference and initialized by the function:
+
+```
+FHitResult HitResult;
+Foo->Trace(OUT HitResult);
+```
+
 ## Events and Delegates
 
 _The following rules apply to all types of delegates in Unreal C++ (single cast delegate, multicast delegates, dynamic multicast delegates and events)._
