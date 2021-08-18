@@ -9,10 +9,55 @@ For API documentation it should also be totally sufficient. Even if you need som
 In addition to this you should have a separate archive for additional documents and diagrams that supplement the source code based docs.
 
 ## General Commenting Rules
+- Write self-documenting code wherever possible
+    
+    ```cpp
+    // Bad: 
+    t = s + l - b; 
+    
+    // Good: 
+    TotalLeaves = SmallLeaves + LargeLeaves - SmallAndLargeLeaves;
+    ```
+
 - Comments should aid the reader and add information to the source code
 - Comments that merely repeat what is already expressed in code do not serve any purpose and should be omitted
+
+    ```cpp
+    // Bad: 
+    // increment Leaves 
+    ++Leaves; 
+    
+    // Good: 
+    // We know there is another tea leaf, because we ruled out all other options.
+    ++Leaves;
+    ```
+
 - Comments of public API should explain intent rather than explaining technical implementation
 - All code must be commented reasonably including source files
+- Do not comment bad code, rewrite it
+
+    ```cpp
+    // Bad: 
+    // total number of leaves is sum of 
+    // small and large leaves less the 
+    // number of leaves that are both 
+    t = s + l - b; 
+    
+    // Good: 
+    TotalLeaves = SmallLeaves + LargeLeaves - SmallAndLargeLeaves;
+    ```
+
+- Never contradict the code
+
+    ```cpp
+    // Bad: 
+    // never increment Leaves! 
+    ++Leaves; 
+
+    // Good: 
+    // We know there is another tea leaf, because we ruled out all other options.
+    ++Leaves;
+    ```
 
 ## Comment Style
 
