@@ -15,6 +15,18 @@ if (condition)
     continue;
 ```
 
+Always place braces on new lines:
+```cpp
+if (condition)
+{
+    statements;
+}
+else
+{
+    statements;
+}
+```
+
 ## Indentation
 
 - Indent using tabs (4 characters)
