@@ -195,11 +195,12 @@ private:
 - Const functions that only return a boolean should be named like a question (mostly Has... or Is... prefix) which matches boolean field naming without the b prefix
 - Non-const functions that do not just determine and return a value but also modify an objects state should reflect this (e.g. Check... instead of Get..., Has... or Is...)
 - UFunctions interacting with Blueprints should follow some special rules:
-    - BlueprintImplementableEvents should be prefixed with Blueprint
+    - BlueprintImplementableEvents that have a C++ equivalent should be prefixed with Blueprint
     - The native C++ equivalent of a blueprint event should be prefixed with Native
-- Property replication events are called OnRep_VariableName, e.g. OnRep_HealthPoints
-- Delegate bound functions begin with Handle prefix (see [Events and Delegates](#events-and-delegates))
-- RPCs (remote procedure calls) are prefixed with their target, so either Server_, Client_ or Multicast_
+    - see ``UAnimInstance::BlueprintUpdateAnimation`` and ``UAnimInstance::NativeUpdateAnimation`` for comparison
+- Property replication events are called ``OnRep_VariableName``, e.g. OnRep_HealthPoints
+- Delegate bound functions begin with ``Handle`` prefix (see [Events and Delegates](#events-and-delegates))
+- RPCs (remote procedure calls) are prefixed with their target, so either ``Server_``, ``Client_`` or ``Multicast_``
 
 ## Function Parameters
 
@@ -224,10 +225,17 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
     ```cpp
     FComponentOverlapEvent OnComponentOverlapped;
     ```
-- Delegate types that are required for a single instance may be called exactly like the instance with an F prefix:
-    ```cpp
-    FOnComponentOverlapped OnComponentOverlapped;
-    ```
+- Delegate types may follow one of two naming styles:
+    - Resusable delegate/event types: 
+        ```cpp
+        // general rule: F + Name + Event/Delegate, e.g.
+        FComponentOverlapEvent
+        FComponentOverlapDelegate
+        ```
+    - Delegates that are required for a single instance may be called exactly like the instance with an F prefix:
+        ```cpp
+        FOnComponentOverlapped OnComponentOverlapped;
+        ```
 - Delegates that share the same signature may be declared with a shared delegate type ending with Delegate suffix:
     ```cpp
     FLoadDelegate;       // used for all kinds of loading events
@@ -248,10 +256,10 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
     // bad - it's hard to tell when exactly this is called
     FLoadDelegate OnLoad;
     ```
-- Functions that are bound to delegates should be named like the delegate instance with an additional prefix "Handle":
+- Functions that are bound to delegates should be named like the delegate instance with "Handle" prefix instead of "On":
     ```cpp
-    void HandleOnExplosion();   // good: clear 
-    void OnExplosion();         // bad: OnExplosion is not a verb
+    void HandleExplosion();     // good: clear 
+    void OnExplosion();         // bad: OnExplosion is the name of the event itself, but should not be used for functions bound to it
     void DealExplosionDamage(); // bad: This may be called in HandleOnExplosion, but it's usually cleaner to have a separate function for delegate binding
     ```
 - Delegates with parameters must document their parameters. If the usage of a parameter changes, a new delegate type should be created.
