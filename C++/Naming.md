@@ -195,8 +195,9 @@ private:
 - Const functions that only return a boolean should be named like a question (mostly Has... or Is... prefix) which matches boolean field naming without the b prefix
 - Non-const functions that do not just determine and return a value but also modify an objects state should reflect this (e.g. Check... instead of Get..., Has... or Is...)
 - UFunctions interacting with Blueprints should follow some special rules:
-    - BlueprintImplementableEvents that have a C++ equivalent should be prefixed with Blueprint
-    - The native C++ equivalent of a blueprint event should be prefixed with Native
+    - BlueprintImplementableEvents that have a C++ equivalent should be prefixed with ``Blueprint``
+        - Note that some UE4 code uses ``K2_`` as a prefix. This is highly discouraged, because the meaning of this prefix is very opaque (it's derived from Kismet 2, the old internal name of Blueprint visual scripting back from UDK days).
+    - The native C++ equivalent of a blueprint event should be prefixed with ``Native``
     - see ``UAnimInstance::BlueprintUpdateAnimation`` and ``UAnimInstance::NativeUpdateAnimation`` for comparison
 - Property replication events are called ``OnRep_VariableName``, e.g. OnRep_HealthPoints
 - Delegate bound functions begin with ``Handle`` prefix (see [Events and Delegates](#events-and-delegates))
@@ -303,3 +304,104 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
     FFileOperationDelegate OnFileCheckedOut;
     ```
     In the above example the contents of the string parameter changed from one delegate instance to the other, which may cause some issues if you bind functions to both delegates.
+
+## Example
+
+To demonstrate the result of the conventions above, take the following practical example of commonly needed functions/events in a game character. Please note that the functions are written inline and some boilerplate code is omitted for brevity.
+
+```cpp
+class AFooCharacter : public ACharacter
+{
+public:
+    // Notify external objects about the character being killed
+    FKillEvent OnKilled;
+
+    // The only instance where a function may be called On...
+    // is one that exposes a delegate.
+    FSimpleMulticastDelegate& OnDamageReceived()
+    {
+        return DamageReceivedEvent;
+    }
+
+    // Alternative: Expose the event via function that takes in a callback.
+    // This has the advantage of not exposing internal state.
+    // This pattern is most commonly seen in Slate events.
+    void OnDamageReceived(const FSimpleDelegate& InCallback)
+    {
+        DamageReceivedEvent.Add(InCallback);
+    }
+
+protected:
+    // Called Handle...
+    // -> we immediately know this is caused from an external event
+    // most likely on a different object
+    void HandleComponentHit(float Velocity)
+    {
+        // calulate damage from hit
+        // [...]
+        Server_DealDamage(Damage);
+    }
+
+    UFUNCTION(Server)
+    void Server_DealDamage(float Damage)
+    {
+        float HealthBefore = Health;
+        Health -= Damage;
+        if (Health < 0)
+        {
+            OnDamageReceived.Broadcast();
+            Kill(Damage);
+        }
+    }
+
+    // Kills this character
+    // Active verb -> not an event handler, not an event
+    void Kill(float Damage)
+    {
+        // [...]
+        Multicast_NativeHandleKilled();
+    }
+
+    // Event handler from an own event.
+    // Can either be bound to the delegate object or invoked explicitly (this is the case here).
+    // To differentiate native and Blueprint functions, this one is prefixed with Native.
+    //
+    // Note that the Handle and Native prefixes are combined with the Multicast_ prefix.
+    // Priority of prefixes is always:
+    // - 1: Net (Server_, Client_ Multicast_, OnRep_)
+    // - 2: BP/C++ (Blueprint, Native)
+    // - 3: Delegate (Handle)
+    UFUNCTION(Multicast)
+    void Multicast_NativeHandleKilled()
+    {
+        TriggerRagdoll(Damage);
+        PlayAnimation(GetDeathAnimation());
+        // [...]
+        BlueprintHandleKilled();
+        OnKilled.Broadcast(Damage);
+    }
+
+    // Blueprint version of NativeHandleKilled().
+    // To differentiate native and Blueprint functions, this one is prefixed with Blueprint instead.
+    UFUNCTION(BlueprintImplementableEvent)
+    void BlueprintHandleKilled();
+
+    // There's no c++ version of this function, so the Blueprint prefix may be omitted.
+    UFUNCTION(BlueprintImplementableEvent)
+    void TriggerRagdoll(float Damage);
+
+    // Native events cannot have different names in C++ and blueprint, because they are the SAME function.
+    // Therefore it must not get any prefix.
+    UFUNCTION(BlueprintNativeEvent)
+    UAnimationSequence* GetDeathAnimation()
+    {
+        // [...]
+    }
+
+private:
+    // Internal event that is exposed via OnDamageRecevied() function above.
+    // No strict naming conventions, because it's not part of the API.
+    // Based on samples from the engine, I would reccommend replacing the usual On prefix with and Event suffix like so:
+    FSimpleMulticastDelegate DamageReceivedEvent;
+}
+```
