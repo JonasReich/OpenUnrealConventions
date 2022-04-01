@@ -347,9 +347,9 @@ protected:
     {
         float HealthBefore = Health;
         Health -= Damage;
-        if (Health < 0)
+        OnDamageReceived.Broadcast();
+        if (Health <= 0 && HealthBefore > 0)
         {
-            OnDamageReceived.Broadcast();
             Kill(Damage);
         }
     }
