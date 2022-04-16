@@ -47,6 +47,42 @@
 
 - Blueprint function libraries are suffixed with Library, e.g. ``UMyPluginLibrary``, ``URegexLibrary``, etc.
 
+## Namespaces
+
+Starting with UE5, Epic has renamed a lot of internal namespaces. We encourage following this pattern that is based on those new namespaces:
+
+```cpp
+// General pattern
+namespace GameOrPlugin::Module::Private::Foo::Bar {}
+```
+
+The elements have the following meanings:
+
+- ``GameOrPlugin`` is a project identifier. We reccommend using the game project or plugin name. Unreal Engine code uses ``UE`` as namespace root.
+- ``Module`` should be your code module. This may be omitted for games that have a single game module.
+- ``Private`` is optional. It should be added for namespaces that contain implementation details which are not interesting for public API. 
+    Often times this will contain nested template definitions that are not meant to be used directly.
+- ``Foo::Bar`` are optional nested namespaces. Use any names that make sense to you. We reccommend only going two levels deep from this point.
+
+### Examples
+
+```cpp
+// UE tuple implementation details. In UE4 this was called UE4Tuple_Private
+namespace UE::Core::Private::Tuple {}
+
+// Online plugins/modules from UE engine code. This contains types like FOnlineServicesRegistry.
+namespace UE::Online {}
+
+// Implementation details of UE::Online namespace members
+namespace UE::Online::Private {}
+
+// Array utility functions from Runtime module of 'Open Unreal Utilities' plugin
+namespace OUU::Runtime::ArrayUtils {}
+
+// Game project namespace for 'PuzzlePlatformer' game
+namespace PuzzlePlatformer{}
+```
+
 ## Template Parameters
 
 - Type template parameters are suffixed with ``Type``. Unless you have a single unambiguous type, in which case you can use the single letter ``T``.
@@ -305,7 +341,7 @@ _The following rules apply to all types of delegates in Unreal C++ (single cast 
     ```
     In the above example the contents of the string parameter changed from one delegate instance to the other, which may cause some issues if you bind functions to both delegates.
 
-## Example
+## Example (Functions, Events, Delegates)
 
 To demonstrate the result of the conventions above, take the following practical example of commonly needed functions/events in a game character. Please note that the functions are written inline and some boilerplate code is omitted for brevity.
 
