@@ -1,5 +1,7 @@
 # Open Unreal Conventions
 
+![Open Unreal Conventions Logo](assets/img/ouc_wide.png)
+
 The Open Unreal Conventions are an open source set of coding and asset conventions for Unreal Engine 4 projects created and maintained by Jonas Reich.
 
 These conventions should serve as a foundation for all aspects of Unreal Engine development. This means they cover not only C++ code, but also Blueprints, Python and Asset creation. Over time we might also add some conventions for complementary tools like batch scripts for building Unreal Engine games.
