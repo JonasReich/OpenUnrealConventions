@@ -2,7 +2,8 @@
 
 # C++ Coding Conventions
 
-<h3 style="color:yellow; background: #2222;">NOTE: These pages are being rewritten as 'live' source code conventions in the form of an Unreal Engine plugin.</h3>
+<pre style="color:yellow; background: #222222eb;">NOTE: These pages are being rewritten as 'live' source code conventions
+in the form of an Unreal Engine plugin.</pre>
 
 See [UnrealPlugin](./UnrealPlugin)
 
